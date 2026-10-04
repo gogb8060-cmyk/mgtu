@@ -76,7 +76,7 @@
 import random
 import matplotlib.pyplot as plt
 import openpyxl
-from usage_time import get_usage_time  # декоратор замера времени (файл препода)
+from usage_time import get_usage_time
 
 # =============================================================================
 # 1. Алгоритмы (вариант 24)
