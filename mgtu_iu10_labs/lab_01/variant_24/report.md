@@ -129,7 +129,7 @@ n_vec = list(range(1, 100_000 * N + 1, 100 * N))
 n_mat = list(range(20, 301, 20))
 
 # 4. Замеры
-print("🚀 Замеры векторных операций...")
+print("Замеры векторных операций...")
 t2, t4, t5, t8 = [], [], [], []
 for n in n_vec:
     v = [random.uniform(1.0, 100.0) for _ in range(n)]
