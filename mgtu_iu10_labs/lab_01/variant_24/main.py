@@ -6,7 +6,7 @@
 import random
 import matplotlib.pyplot as plt
 import openpyxl
-from usage_time import get_usage_time  # Файл должен лежать рядом!
+from usage_time import get_usage_time
 
 # =============================================================================
 # 1. Алгоритмы (Вариант 24)
@@ -132,8 +132,6 @@ ax2.grid(True)
 ax2.legend()
 
 plt.tight_layout()
-
-# ВАЖНО: сохраняем ДО plt.show(), иначе файл будет пустым
 fig.savefig('lab01_results_var24.png', dpi=150, bbox_inches='tight')
 print("✅ Графики сохранены в lab01_results_var24.png")
 
