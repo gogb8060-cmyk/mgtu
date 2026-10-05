@@ -78,7 +78,7 @@ import matplotlib.pyplot as plt
 import openpyxl
 from usage_time import get_usage_time
 
-# 1. Алгоритмы (Вариант 24
+# 1. Алгоритмы (Вариант 24)
 def f2_sum(v):
     """f2: Сумма элементов. Сложность O(n)"""
     return sum(v)
