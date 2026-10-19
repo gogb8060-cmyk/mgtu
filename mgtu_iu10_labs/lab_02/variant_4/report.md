@@ -70,46 +70,70 @@
 
 **Быстрая сортировка (схема Хоара):**
 ```text
+// Основная рекурсивная функция
 function QuickSort(A, low, high):
     if low < high:
+        // Получаем индекс разбиения
         p = Partition(A, low, high)
+        // Рекурсивно сортируем левую и правую части
         QuickSort(A, low, p)
         QuickSort(A, p + 1, high)
 
+// Функция разбиения (схема Хоара)
 function Partition(A, low, high):
-    pivot = A[low + (high - low) / 2]  // Средний элемент
+    // Выбираем средний элемент как опорный
+    pivot = A[(low + high) / 2] 
     i = low - 1
     j = high + 1
+    
     loop:
+        // Двигаем левый указатель вправо, пока элемент меньше опорного
         do i = i + 1 while A[i] < pivot
+        
+        // Двигаем правый указатель влево, пока элемент больше опорного
         do j = j - 1 while A[j] > pivot
+        
+        // Если указатели встретились или пересеклись, возвращаем границу
         if i >= j:
             return j
+            
+        // Иначе меняем найденные элементы местами
         swap A[i] with A[j]
 ```
 
 **Сортировка перемешиванием:**
 ```text
 function CocktailSort(A):
-    swapped = true
-    begin = 0
-    end = length(A) - 1
+    swapped = true       // Флаг наличия обменов
+    begin = 0            // Левая граница
+    end = length(A) - 1  // Правая граница
+    
     while swapped:
         swapped = false
-        for i from begin to end - 1:       // Слева направо
+        
+        // 1. ПРОХОД СЛЕВА НАПРАВО (всплывает максимум)
+        for i from begin to end - 1:
             if A[i] > A[i + 1]:
-                swap A[i] and A[i + 1]
+                swap A[i] with A[i + 1]
                 swapped = true
-        if not swapped: break
+                
+        // Если обменов не было, массив уже отсортирован
+        if not swapped:
+            break
+            
+        // Сбрасываем флаг и сужаем правую границу (максимум уже на месте)
         swapped = false
         end = end - 1
-        for i from end - 1 down to begin:  // Справа налево
+        
+        // 2. ПРОХОД СПРАВА НАЛЕВО (всплывает минимум)
+        for i from end - 1 down to begin:
             if A[i] > A[i + 1]:
-                swap A[i] and A[i + 1]
+                swap A[i] with A[i + 1]
                 swapped = true
+                
+        // Сужаем левую границу (минимум уже на месте)
         begin = begin + 1
 ```
-*Примечание: Блок-схемы алгоритмов реализованы в LaTeX (TikZ) в соответствии с требованиями методички и представлены в отдельном файле приложения к отчёту.*
 
 ### 3.3. Ручная трассировка
 Возьмём массив $A = [5, 1, 4, 2, 8]$.
