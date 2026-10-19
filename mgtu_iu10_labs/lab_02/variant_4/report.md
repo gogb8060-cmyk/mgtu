@@ -150,9 +150,7 @@ try:
 except ImportError:
     HAS_USAGE_TIME = False
 
-# ============================================================
 # 1. Алгоритмы сортировки
-# ============================================================
 def quick_sort_hoare(arr):
     """Быстрая сортировка (схема Хоара). O(n log n) в среднем."""
     a = list(arr)  # Копия, чтобы не мутировать исходный массив
@@ -196,9 +194,9 @@ def cocktail_shaker_sort(arr):
         begin += 1
     return a
 
-# ============================================================
+
 # 2. Настройка замеров и параметры эксперимента
-# ============================================================
+
 if HAS_USAGE_TIME:
     m_quick_s = get_usage_time(number=3, ndigits=6)(quick_sort_hoare)
     m_cocktail_s = get_usage_time(number=3, ndigits=6)(cocktail_shaker_sort)
@@ -216,9 +214,9 @@ type_names = {'random': 'Случайный', 'sorted': 'Упорядоченн�
 random.seed(42)
 results = []
 
-# ============================================================
+
 # 3. Генерация и замеры
-# ============================================================
+
 def generate_array(n, arr_type):
     arr = [random.randint(1, 1_000_000) for _ in range(n)]
     if arr_type == 'sorted': arr.sort()
@@ -246,9 +244,8 @@ for n in sizes:
             
         results.append({'n': n, 'type': type_names[arr_type], 'quick_sec': t_quick, 'cocktail_sec': t_cocktail})
 
-# ============================================================
+
 # 4. Построение графиков
-# ============================================================
 fig, axes = plt.subplots(1, 3, figsize=(18, 6))
 fig.suptitle('Сравнение алгоритмов сортировки (Вариант 4)\nБыстрая (Хоара) vs Сортировка перемешиванием', fontsize=13, fontweight='bold', y=1.02)
 colors = {'quick': '#2196F3', 'cocktail': '#F44336'}
